@@ -43,7 +43,7 @@ function Nav() {
         </div>
 
         <div className="ham">
-          <button id="btn1">List Your Home</button>
+          <button id="btn1">List Your Property</button>
           <button
             id="btn2"
             onClick={() => {
