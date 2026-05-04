@@ -34,6 +34,9 @@ import campBarot2 from "../../assets/campBarot.jpeg";
 import apartmentRohru from "../../assets/apartmentRohru.jpg";
 import apartmentRohru1 from "../../assets/rohruRoom.jpg";
 import apartmentRohru2 from "../../assets/rohruRoom2.jpg";
+import homestayManali from "../../assets/manaliHomestay.jpg";
+import homestayManali1 from "../../assets/manaliFront.jpeg";
+import homestayManali2 from "../../assets/manaliRoom.jpg";
 
 function Home() {
   return (
@@ -46,12 +49,12 @@ function Home() {
         price={"10,000"}
       />
 
-       <Card
-        image1={homestay}
-        image2={homestay1}
-        image3={homestay2}
-        title={"4 BHK Homestay in Kufri"}
-        price={"60,000"}
+      <Card
+        image1={campBarot}
+        image2={campBarot1}
+        image3={campBarot2}
+        title={"Camping Site at Barot"}
+        price={"90,000"}
       />
 
       <Card
@@ -78,7 +81,7 @@ function Home() {
         price={"40,000"}
       />
 
-       <Card
+      <Card
         image1={homestayDalhousie}
         image2={homestayDalhousie1}
         image3={homestayDalhousie2}
@@ -90,11 +93,11 @@ function Home() {
         image1={shimlaApartment}
         image2={shimlaApartment1}
         image3={shimlaApartment2}
-        title={"3 BHK in apartment in Shimla"}
+        title={"3 BHK in Apartment in Shimla"}
         price={"35,000"}
       />
 
-       <Card
+      <Card
         image1={campKasol}
         image2={campKasol1}
         image3={campKasol2}
@@ -102,23 +105,23 @@ function Home() {
         price={"70,000"}
       />
 
-       <Card
+      <Card
         image1={campTosh}
         image2={campTosh2}
         image3={campTosh1}
         title={"Camping Site at Tosh"}
         price={"50,000"}
       />
-      
+
       <Card
-        image1={campBarot}
-        image2={campBarot1}
-        image3={campBarot2}
-        title={"Camping Site at Barot"}
-        price={"90,000"}
+        image1={homestay}
+        image2={homestay1}
+        image3={homestay2}
+        title={"4 BHK Homestay in Kufri"}
+        price={"60,000"}
       />
 
-       <Card
+      <Card
         image1={apartmentRohru}
         image2={apartmentRohru1}
         image3={apartmentRohru2}
@@ -126,6 +129,13 @@ function Home() {
         price={"25,000"}
       />
 
+      <Card
+        image1={homestayManali}
+        image2={homestayManali1}
+        image3={homestayManali2}
+        title={"6 BHK Homestay in Manali "}
+        price={"65,000"}
+      />
     </div>
   );
 }
