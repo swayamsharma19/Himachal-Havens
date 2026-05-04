@@ -17,6 +17,7 @@ import FarmHouses from "./Component/FarmHouses/FarmHouses.jsx";
 import PoolHouses from "./Component/PoolHouses/PoolHouses.jsx";
 import TentHouses from "./Component/TentHouses/TentHouses.jsx";
 import ForestHouses from "./Component/ForestHouses/ForestHouses.jsx";
+import Listing from "./Component/Listing/Listing.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
       <Route path="PoolHouses" element={<PoolHouses />} />
       <Route path="TentHouses" element={<TentHouses />} />
        <Route path="ForestHouses" element={<ForestHouses />} />
+       <Route path="Listing" element={<Listing />} />
     </Route>,
   ),
 );

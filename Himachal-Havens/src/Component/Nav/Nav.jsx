@@ -26,7 +26,7 @@ function Nav() {
           <Link to={"/Signup"}>
             <div className="ham1">Sign Up</div>
           </Link>
-          <div className="ham1">List your Property</div>
+          <Link to={"/Listing"}><div className="ham1">List your Property</div></Link>
           <div className="ham1">Help Center</div>
         </div>
       ) : (
@@ -50,7 +50,8 @@ function Nav() {
         </div>
 
         <div className="ham">
-          <button id="btn1">List Your Property</button>
+          <Link to={"/Listing"}><button id="btn1">List Your Property</button>
+          </Link>
           <button
             id="btn2"
             onClick={() => {
