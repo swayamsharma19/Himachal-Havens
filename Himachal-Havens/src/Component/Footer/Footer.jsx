@@ -9,8 +9,11 @@ function Footer() {
           <span id="contact1">Contact US</span>
           <span>+91 70187-64XXX</span>
           <span>kaioken8989@gmail.com</span>
-          <span>Near Siyali Mahadev Temple, 
-            Manali/India 175131</span>
+          <span>
+            Near Siyali Mahadev Temple,
+            <br />
+            Manali/India - 175131
+          </span>
         </div>
         <div className="box">
           <span id="services">Our Services</span>
