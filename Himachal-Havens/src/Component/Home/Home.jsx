@@ -1,4 +1,6 @@
-import React from "react";
+
+import React, { useContext } from "react";
+import { dataContext } from "../../Context/Usercontext";
 import "./Home.css";
 import Card from "../Card/Card";
 import house from "../../assets/House.jpg";
@@ -39,6 +41,20 @@ import homestayManali1 from "../../assets/manaliFront.jpeg";
 import homestayManali2 from "../../assets/manaliRoom.jpg";
 
 function Home() {
+    let {
+      title,
+      setTitle,
+      addListing,
+      setaddListing,
+      addImage1,
+      setaddImage1,
+      addImage2,
+      setaddImage2,
+      addImage3,
+      setaddImage3,
+      price,
+      setprice,
+    } = useContext(dataContext);
   return (
     <div id="home">
       <Card
@@ -136,6 +152,14 @@ function Home() {
         title={"6 BHK Homestay in Manali "}
         price={"65,000"}
       />
+
+     {addListing?<Card
+        image1={URL.createObjectURL(addImage1)}
+        image2={URL.createObjectURL(addImage2)}
+        image3={URL.createObjectURL(addImage3)}
+        title={title}
+        price={price}
+      />:""}
     </div>
   );
 }

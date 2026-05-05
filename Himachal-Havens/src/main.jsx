@@ -18,6 +18,8 @@ import PoolHouses from "./Component/PoolHouses/PoolHouses.jsx";
 import TentHouses from "./Component/TentHouses/TentHouses.jsx";
 import ForestHouses from "./Component/ForestHouses/ForestHouses.jsx";
 import Listing from "./Component/Listing/Listing.jsx";
+import Usercontext from "./Context/Usercontext.jsx";
+import Contact from "./Component/Contactus/Contact.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -29,14 +31,17 @@ const router = createBrowserRouter(
       <Route path="FarmHouses" element={<FarmHouses />} />
       <Route path="PoolHouses" element={<PoolHouses />} />
       <Route path="TentHouses" element={<TentHouses />} />
-       <Route path="ForestHouses" element={<ForestHouses />} />
-       <Route path="Listing" element={<Listing />} />
+      <Route path="ForestHouses" element={<ForestHouses />} />
+      <Route path="Listing" element={<Listing />} />
+      <Route path="Contact" element={<Contact />} />
     </Route>,
   ),
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Usercontext>
+      <RouterProvider router={router} />
+    </Usercontext>
   </React.StrictMode>,
 );

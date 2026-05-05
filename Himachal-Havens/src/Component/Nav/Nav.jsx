@@ -27,7 +27,7 @@ function Nav() {
             <div className="ham1">Sign Up</div>
           </Link>
           <Link to={"/Listing"}><div className="ham1">List your Property</div></Link>
-          <div className="ham1">Help Center</div>
+         <Link to={"/Contact"}><div className="ham1">Help Center</div></Link> 
         </div>
       ) : (
         <div></div>
