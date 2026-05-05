@@ -9,3 +9,12 @@
     background-color: white;
     margin-top: 180px;
 }
+
+
+@media (max-width: 600px) {
+    #home{
+        margin-top: 140px;
+        gap: 20px;
+        padding: 10px;
+    }
+}
