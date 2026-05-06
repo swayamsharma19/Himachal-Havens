@@ -1,5 +1,4 @@
-
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { dataContext } from "../../Context/Usercontext";
 import "./Home.css";
 import Card from "../Card/Card";
@@ -40,126 +39,77 @@ import homestayManali from "../../assets/manaliHomestay.jpg";
 import homestayManali1 from "../../assets/manaliFront.jpeg";
 import homestayManali2 from "../../assets/manaliRoom.jpg";
 
+// Maps backend title → local images (since images stay local)
+const imageMap = {
+  "2 BHK Apartment in Manali":    [house, house1, house2],
+  "Camping Site at Barot":        [campBarot, campBarot1, campBarot2],
+  "5 BHK Villa in Kasauli":       [villa, villa1, villa2],
+  "4 BHK Cottage in Jibhi":       [cottage, cottage1, cottage2],
+  "3 BHK Cottage in Bir":         [cottageBir, cottageBir1, cottageBir2],
+  "6 BHK Homestay in Dalhousie":  [homestayDalhousie, homestayDalhousie1, homestayDalhousie2],
+  "3 BHK Apartment in Shimla":    [shimlaApartment, shimlaApartment1, shimlaApartment2],
+  "Camping Site at Kasol":        [campKasol, campKasol1, campKasol2],
+  "Camping Site at Tosh":         [campTosh, campTosh2, campTosh1],
+  "4 BHK Homestay in Kufri":      [homestay, homestay1, homestay2],
+  "2 BHK Apartment at Rohru":     [apartmentRohru, apartmentRohru1, apartmentRohru2],
+  "6 BHK Homestay in Manali":     [homestayManali, homestayManali1, homestayManali2],
+};
+
 function Home() {
-    let {
-      title,
-      setTitle,
-      addListing,
-      setaddListing,
-      addImage1,
-      setaddImage1,
-      addImage2,
-      setaddImage2,
-      addImage3,
-      setaddImage3,
-      price,
-      setprice,
-    } = useContext(dataContext);
+  let {
+    title,
+    setTitle,
+    addListing,
+    setaddListing,
+    addImage1,
+    setaddImage1,
+    addImage2,
+    setaddImage2,
+    addImage3,
+    setaddImage3,
+    price,
+    setprice,
+  } = useContext(dataContext);
+
+  // ── NEW: fetch destinations from backend ──
+  const [destinations, setDestinations] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/destinations")
+      .then((res) => res.json())
+      .then((data) => setDestinations(data))
+      .catch((err) => console.error("Failed to fetch destinations:", err));
+  }, []);
+  // ─────────────────────────────────────────
+
   return (
     <div id="home">
-      <Card
-        image1={house}
-        image2={house1}
-        image3={house2}
-        title={"2 BHK Apartment in Manali"}
-        price={"10,000"}
-      />
+      {destinations.map((dest) => {
+        const images = imageMap[dest.title];
+        if (!images) return null;
+        return (
+          <Card
+            key={dest.id}
+            image1={images[0]}
+            image2={images[1]}
+            image3={images[2]}
+            title={dest.title}
+            price={dest.price}
+          />
+        );
+      })}
 
-      <Card
-        image1={campBarot}
-        image2={campBarot1}
-        image3={campBarot2}
-        title={"Camping Site at Barot"}
-        price={"90,000"}
-      />
-
-      <Card
-        image1={villa}
-        image2={villa1}
-        image3={villa2}
-        title={"5 BHK Villa in Kasauli"}
-        price={"60,000"}
-      />
-
-      <Card
-        image1={cottage}
-        image2={cottage1}
-        image3={cottage2}
-        title={"4 BHK Cottage in Jibhi"}
-        price={"50,000"}
-      />
-
-      <Card
-        image1={cottageBir}
-        image2={cottageBir1}
-        image3={cottageBir2}
-        title={"3 BHK Cottage in Bir"}
-        price={"40,000"}
-      />
-
-      <Card
-        image1={homestayDalhousie}
-        image2={homestayDalhousie1}
-        image3={homestayDalhousie2}
-        title={"6 BHK in Homestay in Dalhousie "}
-        price={"75,000"}
-      />
-
-      <Card
-        image1={shimlaApartment}
-        image2={shimlaApartment1}
-        image3={shimlaApartment2}
-        title={"3 BHK in Apartment in Shimla"}
-        price={"35,000"}
-      />
-
-      <Card
-        image1={campKasol}
-        image2={campKasol1}
-        image3={campKasol2}
-        title={"Camping Site at Kasol"}
-        price={"70,000"}
-      />
-
-      <Card
-        image1={campTosh}
-        image2={campTosh2}
-        image3={campTosh1}
-        title={"Camping Site at Tosh"}
-        price={"50,000"}
-      />
-
-      <Card
-        image1={homestay}
-        image2={homestay1}
-        image3={homestay2}
-        title={"4 BHK Homestay in Kufri"}
-        price={"60,000"}
-      />
-
-      <Card
-        image1={apartmentRohru}
-        image2={apartmentRohru1}
-        image3={apartmentRohru2}
-        title={"2 BHK Apartment at Rohru"}
-        price={"25,000"}
-      />
-
-      <Card
-        image1={homestayManali}
-        image2={homestayManali1}
-        image3={homestayManali2}
-        title={"6 BHK Homestay in Manali "}
-        price={"65,000"}
-      />
-
-     {addListing?<Card
-        image1={URL.createObjectURL(addImage1)}
-        image2={URL.createObjectURL(addImage2)}
-        image3={URL.createObjectURL(addImage3)}
-        title={title}
-        price={price}
-      />:""}
+      {addListing ? (
+        <Card
+          image1={URL.createObjectURL(addImage1)}
+          image2={URL.createObjectURL(addImage2)}
+          image3={URL.createObjectURL(addImage3)}
+          title={title}
+          price={price}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
