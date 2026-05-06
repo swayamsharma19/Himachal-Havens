@@ -39,7 +39,7 @@ import homestayManali from "../../assets/manaliHomestay.jpg";
 import homestayManali1 from "../../assets/manaliFront.jpeg";
 import homestayManali2 from "../../assets/manaliRoom.jpg";
 
-// Maps backend title → local images (since images stay local)
+
 const imageMap = {
   "2 BHK Apartment in Manali":    [house, house1, house2],
   "Camping Site at Barot":        [campBarot, campBarot1, campBarot2],
@@ -71,16 +71,16 @@ function Home() {
     setprice,
   } = useContext(dataContext);
 
-  // ── NEW: fetch destinations from backend ──
+  
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/destinations")
+    fetch("https://himachal-havens.onrender.com/api/destinations")
       .then((res) => res.json())
       .then((data) => setDestinations(data))
       .catch((err) => console.error("Failed to fetch destinations:", err));
   }, []);
-  // ─────────────────────────────────────────
+ 
 
   return (
     <div id="home">

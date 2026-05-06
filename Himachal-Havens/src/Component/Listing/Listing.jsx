@@ -32,7 +32,7 @@ function Listing() {
 
           
           try {
-            const res = await fetch("http://localhost:5000/api/listings", {
+            const res = await fetch("https://himachal-havens.onrender.com/api/listings", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ title, price, location, description }),
